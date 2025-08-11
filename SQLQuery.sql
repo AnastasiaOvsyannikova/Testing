@@ -21,13 +21,13 @@ email varchar(50),
 age int NOT NULL
 )
 
-create table Orders
+CREATE TABLE Orders
 (
-idOrders int identity not null primary key,
-clientId int not null foreign key references Clients(clientId),
-roomId int not null foreign key references Rooms(roomId),
-price int not null,
-dayCount int not null
+idOrders int IDENTITY NOT NULL PRIMARY KEY,
+clientId int  NOT NULL FOREIGN KEY REFERENCES Clients(clientId),
+roomId int  NOT NULL FOREIGN KEY REFERENCES Rooms(roomId),
+price int NOT NULL,
+dayCount int NOT NULL
 )
 
 INSERT INTO Orders (clientId,roomId,price,dayCount) values
@@ -40,11 +40,11 @@ INSERT INTO Orders (clientId,roomId,price,dayCount) values
 (1,1,500,11),
 (2,2,300,2)
 
-select price, count(price) from Orders group by price
-select age, count(age) from Clients group by age having age>18
-select * from Clients order by typeClient
-select * from Clients order by age desc
-select * from orders join clients on orders.clientId = Clients.clientId
+SELECT price, COUNT(price) FROM Orders GROUP BY price
+SELECT age, COUNT(age) FROM Clients GROUP BY age having age>18
+SELECT * FROM Clients ORDER BY typeClient
+SELECT * FROM Clients ORDER BY age desc
+SELECT * FROM orders JOIN clients on orders.clientId = Clients.clientId
 
 
 SELECT TOP (1000) [hotelId]
@@ -83,18 +83,18 @@ SELECT * FROM Clients
 SELECT * FROM Clients WHERE age=21
 SELECT * FROM Clients WHERE age=17
 SELECT typeClient,email FROM Clients
-SELECT * FROM Clients Where typeClient='Egor'
-SELECT * FROM Clients Where typeClient LIKE 'Eg%'
-SELECT * FROM Clients Where typeClient LIKE '%a'
+SELECT * FROM Clients WHERE typeClient='Egor'
+SELECT * FROM Clients WHERE typeClient LIKE 'Eg%'
+SELECT * FROM Clients WHERE typeClient LIKE '%a'
 SELECT * FROM Clients WHERE typeClient LIKE '%a%'
 SELECT * FROM Clients WHERE email LIKE '%@%'
-SELECT * FROM Clients Where typeClient LIKE 'Ego_'
+SELECT * FROM Clients WHERE typeClient LIKE 'Ego_'
 
-SELECT Count(age) as AgeCount From Clients Where age=21
-select Sum(age) as SumAge From Clients
-select avg(age) as AvgAge From Clients
-select max(age) as MaxAge from Clients
-select min(age) as MinAge from Clients
+SELECT Count(age) as AgeCount FROM Clients WHERE age=21
+SELECT Sum(age) as SumAge FROM Clients
+SELECT avg(age) as AvgAge FROM Clients
+SELECT max(age) as MaxAge FROM Clients
+SELECT min(age) as MinAge FROM Clients
 
 
 
@@ -102,4 +102,5 @@ UPDATE HOTELS SET starsCount=4, Address='221Streets' WHERE hotelId = 2
 
 DELETE FROM HOTELS WHERE hotelId=1
 DROP TABLE HOTELS
+
 
